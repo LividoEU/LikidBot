@@ -7,11 +7,7 @@ It is designed to be modular and scalable, with functionality including (but not
 
 ## 📦 Features
 
-- ✅ Modular command & interaction system
 - 🔒 League of Legends account verification via icon check
-- 🧠 Built with TypeScript for strong typing and scalability
-- ⚙️ Easy configuration via `.env`
-- 🔄 Live-reloading during development with `nodemon`
 
 More features coming soon...
 
