@@ -43,20 +43,6 @@ RIOT_API_KEY=your_riot_api_key
 
 ---
 
-## 📁 Project Structure
-
-```text
-src/
-├── commands/         # Slash command definitions
-├── events/           # Event listeners (ready, interactionCreate, etc.)
-├── interactions/     # Button and modal handlers
-├── riot/             # Riot API integration
-├── services/         # Verification logic, role management, etc.
-└── index.ts          # Bot entry point
-```
-
----
-
 ## 🛠️ Development
 
 ### 1. Start with live-reloading (recommended)
