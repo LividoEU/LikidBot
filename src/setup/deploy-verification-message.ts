@@ -25,14 +25,9 @@ import {
     }
   
     const embed = new EmbedBuilder()
-      .setTitle("🔗 VINCULAR CUENTAS Y BÚSQUEDA DE PARTIDA 🔍")
+      .setTitle("🔗 VINCULAR CUENTA PARA SHADEMY 🔗")
       .setDescription(
-        `Para que podáis buscar partida de forma eficiente, debéis vincular vuestra cuenta de League of Legends.\n\n` +
-        `**❓ FAQ**\n` +
-        `• ¿Debo volver a verificar la cuenta? No, se verificará automáticamente al introducir el invocador.\n` +
-        `• ¿Límite de cuentas? Máximo 3 cuentas.\n` +
-        `• ¿Cómo elimino una cuenta? Usando el botón "Ver cuentas".\n` +
-        `• ¿No se actualizó mi división? Pulsa "Actualizar datos".`
+        `Para que se te asignen los roles de elo de tu cuenta adecuadamente, por favor vincula tu cuenta de League of Legends.`
       )
       .setColor("Blurple");
   
@@ -41,10 +36,6 @@ import {
         .setCustomId("start-verification")
         .setLabel("Vincular cuenta")
         .setStyle(ButtonStyle.Primary),
-      new ButtonBuilder()
-        .setCustomId("view-accounts")
-        .setLabel("Ver cuentas")
-        .setStyle(ButtonStyle.Secondary),
       new ButtonBuilder()
         .setCustomId("refresh-data")
         .setLabel("Actualizar datos")
