@@ -6,7 +6,7 @@ import {
     InteractionReplyOptions,
   } from "discord.js";
   
-  export async function handleStartVerification(interaction: ButtonInteraction) {
+  export async function startVerification(interaction: ButtonInteraction) {
     const reply: InteractionReplyOptions = {
       ephemeral: true,
       content: `Para comenzar el proceso de verificación, asegúrate de tener acceso a tu cuenta de League of Legends.\n\n` +

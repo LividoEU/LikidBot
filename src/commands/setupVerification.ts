@@ -2,7 +2,7 @@ import { SlashCommandBuilder, ChatInputCommandInteraction, PermissionsBitField }
 import { deployVerificationMessage } from "../setup/deployVerificationMessage";
 
 export const data = new SlashCommandBuilder()
-  .setName("setup-verification")
+  .setName("iniciar-verificacion")
   .setDescription("Postea el mensaje de verificación en este canal");
 
 export async function execute(interaction: ChatInputCommandInteraction) {

@@ -6,26 +6,26 @@ export async function handleButtonInteraction(interaction: ButtonInteraction) {
   try {
     switch (customId) {
       case "start-verification": {
-        const { handleStartVerification } = await import("../../riot/account-verifier/startVerification");
-        await handleStartVerification(interaction);
+        const { startVerification } = await import("../../riot/account-verifier/startVerification");
+        await startVerification(interaction);
         break;
       }
 
       case "acknowledge-verification": {
-        const { showSummonerInfoModal } = await import("../../riot/account-verifier/modals/requestSummonerInfo");
+        const { showSummonerInfoModal } = await import("../../riot/account-verifier/modals/showSummonerInfoModal");
         await showSummonerInfoModal(interaction);
         break;
       }
 
       case "confirm-account": {
-        const { handleConfirmAccount } = await import("../../riot/account-verifier/confirmAccount");
-        await handleConfirmAccount(interaction);
+        const { confirmAccount } = await import("../../riot/account-verifier/confirmAccount");
+        await confirmAccount(interaction);
         break;
       }
 
       case "verify-icon-change": {
-        const { handleVerifyIconChange } = await import("../../riot/account-verifier/verifyIconChange");
-        await handleVerifyIconChange(interaction);
+        const { verifyIconChange } = await import("../../riot/account-verifier/verifyIconChange");
+        await verifyIconChange(interaction);
         break;
       }
 

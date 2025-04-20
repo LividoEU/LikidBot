@@ -8,7 +8,20 @@ import {
   PROFILE_ICON_VERSION
 } from "../../constants/mainConst";
 
-export async function handleVerifyIconChange(interaction: ButtonInteraction) {
+const tierTranslation: Record<string, string> = {
+  CHALLENGER: "Challenger",
+  GRANDMASTER: "Gran Maestro",
+  MASTER: "Master",
+  DIAMOND: "Diamante",
+  EMERALD: "Esmeralda",
+  PLATINUM: "Platino",
+  GOLD: "Oro",
+  SILVER: "Plata",
+  BRONZE: "Bronce",
+  IRON: "Hierro"
+};
+
+export async function verifyIconChange(interaction: ButtonInteraction) {
   const session = SessionManager.get(interaction.user.id);
 
   if (!session) {
@@ -38,16 +51,37 @@ export async function handleVerifyIconChange(interaction: ButtonInteraction) {
     const updatedSummoner = (await res.json()) as SummonerResponse;
 
     if (updatedSummoner.profileIconId === session.expectedIconId) {
-      // TODO: Asignar roles, registrar verificación, etc.
+      const guild = interaction.guild;
+      const member = await guild?.members.fetch(interaction.user.id);
+      const tier = session.ranked?.solo?.tier;
+      let roleMention: string | null = null;
+
+      if (guild && member && tier) {
+        const translatedRole = tierTranslation[tier.toUpperCase()];
+        if (translatedRole) {
+          const role = guild.roles.cache.find(
+            r => r.name.toLowerCase() === translatedRole.toLowerCase()
+          );
+
+          if (role) {
+            await member.roles.add(role);
+            roleMention = `<@&${role.id}>`;
+          } else {
+            console.warn(`⚠️ Rol no encontrado: ${translatedRole}`);
+          }
+        }
+      }
+
       await interaction.reply({
         ephemeral: true,
-        content: "✅ Icono verificado correctamente. Tu cuenta ha sido vinculada con éxito."
+        content: `✅ Icono verificado correctamente. Tu cuenta ha sido vinculada con éxito.` +
+                 (roleMention ? `\nRol asignado: ${roleMention}` : "")
       });
     } else {
       await interaction.reply({
         ephemeral: true,
         content:
-          `❌ El icono actual (${updatedSummoner.profileIconId}) no coincide con el requerido (${session.expectedIconId}).\n` +
+          `❌ El icono actual no coincide con el requerido.\n` +
           `Asegúrate de haber guardado los cambios y vuelve a intentarlo.`
       });
     }

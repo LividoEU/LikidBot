@@ -11,13 +11,13 @@ import {
   RIOT_ACCOUNT_BASE,
   RIOT_SUMMONER_BASE,
   PROFILE_ICON_VERSION
-} from "../../constants/mainConst"
+} from "../../constants/mainConst";
 
 import fetch from "node-fetch";
 import { RiotAccountResponse, SummonerResponse } from "../../types/riot";
 import { SessionManager } from "../../session/sessionManager";
 
-export async function handleSummonerInfo(interaction: ModalSubmitInteraction) {
+export async function summonerInfo(interaction: ModalSubmitInteraction) {
   const summonerName = interaction.fields.getTextInputValue("summoner-name").trim();
   const tag = interaction.fields.getTextInputValue("summoner-tag").trim();
 
@@ -66,6 +66,23 @@ export async function handleSummonerInfo(interaction: ModalSubmitInteraction) {
       verificationIconId = Math.floor(Math.random() * 29);
     } while (verificationIconId === summonerData.profileIconId);
 
+    // Fetch ranked info
+    const rankedRes = await fetch(
+      `${RIOT_SUMMONER_BASE}/lol/league/v4/entries/by-puuid/${accountData.puuid}`,
+      {
+        headers: { "X-Riot-Token": RIOT_TOKEN }
+      }
+    );
+
+    let rankedSolo = null;
+    let rankedFlex = null;
+
+    if (rankedRes.ok) {
+      const rankedData = await rankedRes.json();
+      rankedSolo = rankedData.find((entry: any) => entry.queueType === "RANKED_SOLO_5x5") || null;
+      rankedFlex = rankedData.find((entry: any) => entry.queueType === "RANKED_FLEX_SR") || null;
+    }
+
     // Store session
     SessionManager.set(interaction.user.id, {
       puuid: accountData.puuid,
@@ -73,15 +90,28 @@ export async function handleSummonerInfo(interaction: ModalSubmitInteraction) {
       tagLine: accountData.tagLine,
       summonerLevel: summonerData.summonerLevel,
       profileIconId: summonerData.profileIconId,
-      expectedIconId: verificationIconId
+      expectedIconId: verificationIconId,
+      ranked: {
+        solo: rankedSolo,
+        flex: rankedFlex
+      }
     });
+
+    const eloLine = rankedSolo
+      ? `**SoloQ:** ${rankedSolo.tier} ${rankedSolo.rank} (${rankedSolo.leaguePoints} LP)`
+      : `**SoloQ:** Sin posicionar`;
+
+    const flexLine = rankedFlex
+      ? `\n**Flex:** ${rankedFlex.tier} ${rankedFlex.rank} (${rankedFlex.leaguePoints} LP)`
+      : `\n**Flex:** Sin posicionar`;
 
     const embedAccount = new EmbedBuilder()
       .setTitle("🧾 Datos de tu cuenta")
       .setDescription(
         `**Invocador:** ${summonerName}#${tag}\n` +
-        `**Nivel:** ${summonerData.summonerLevel}\n\n` +
-        `Si esta es tu cuenta, pulsa en "Continuar" para completar la verificación.`
+        `**Nivel:** ${summonerData.summonerLevel}\n` +
+        eloLine + flexLine +
+        `\n\nSi esta es tu cuenta, pulsa en "Continuar" para completar la verificación.`
       )
       .setThumbnail(iconUrl)
       .setColor("Green");

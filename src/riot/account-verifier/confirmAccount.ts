@@ -15,7 +15,7 @@ import {
   
   import { SessionManager } from "../../session/sessionManager";
   
-  export async function handleConfirmAccount(interaction: ButtonInteraction) {
+  export async function confirmAccount(interaction: ButtonInteraction) {
     const session = SessionManager.get(interaction.user.id);
     if (!session) {
       await interaction.reply({
