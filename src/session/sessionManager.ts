@@ -5,6 +5,9 @@ interface VerificationSession {
   summonerLevel: number;
   profileIconId: number;
   expectedIconId: number;
+  server: string;
+  serverRegion: string;
+  accountRegion: string;
   ranked?: {
     solo?: {
       queueType: string;

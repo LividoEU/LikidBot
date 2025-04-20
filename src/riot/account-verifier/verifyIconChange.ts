@@ -2,11 +2,7 @@ import { ButtonInteraction } from "discord.js";
 import fetch from "node-fetch";
 import { SessionManager } from "../../session/sessionManager";
 import { SummonerResponse } from "../../types/riot";
-import {
-  RIOT_TOKEN,
-  RIOT_SUMMONER_BASE,
-  PROFILE_ICON_VERSION
-} from "../../constants/mainConst";
+import { RIOT_TOKEN, PROFILE_ICON_VERSION } from "../../constants/mainConst";
 
 const tierTranslation: Record<string, string> = {
   CHALLENGER: "Challenger",
@@ -34,7 +30,7 @@ export async function verifyIconChange(interaction: ButtonInteraction) {
 
   try {
     const res = await fetch(
-      `${RIOT_SUMMONER_BASE}/lol/summoner/v4/summoners/by-puuid/${session.puuid}`,
+      `https://${session.serverRegion}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${session.puuid}`,
       {
         headers: { "X-Riot-Token": RIOT_TOKEN }
       }
@@ -53,29 +49,38 @@ export async function verifyIconChange(interaction: ButtonInteraction) {
     if (updatedSummoner.profileIconId === session.expectedIconId) {
       const guild = interaction.guild;
       const member = await guild?.members.fetch(interaction.user.id);
-      const tier = session.ranked?.solo?.tier;
-      let roleMention: string | null = null;
+      let mentions: string[] = [];
 
-      if (guild && member && tier) {
-        const translatedRole = tierTranslation[tier.toUpperCase()];
-        if (translatedRole) {
-          const role = guild.roles.cache.find(
-            r => r.name.toLowerCase() === translatedRole.toLowerCase()
-          );
-
-          if (role) {
-            await member.roles.add(role);
-            roleMention = `<@&${role.id}>`;
-          } else {
-            console.warn(`⚠️ Rol no encontrado: ${translatedRole}`);
+      if (guild && member) {
+        // Tier role
+        const tier = session.ranked?.solo?.tier;
+        if (tier) {
+          const translatedRole = tierTranslation[tier.toUpperCase()];
+          if (translatedRole) {
+            const role = guild.roles.cache.find(r =>
+              r.name.toLowerCase() === translatedRole.toLowerCase()
+            );
+            if (role) {
+              await member.roles.add(role);
+              mentions.push(`<@&${role.id}>`);
+            }
           }
+        }
+
+        // Server role (EUW, NA, etc.)
+        const serverRole = guild.roles.cache.find(r =>
+          r.name.toLowerCase() === session.server.toLowerCase()
+        );
+        if (serverRole) {
+          await member.roles.add(serverRole);
+          mentions.push(`<@&${serverRole.id}>`);
         }
       }
 
       await interaction.reply({
         ephemeral: true,
         content: `✅ Icono verificado correctamente. Tu cuenta ha sido vinculada con éxito.` +
-                 (roleMention ? `\nRol asignado: ${roleMention}` : "")
+                 (mentions.length ? `\nRoles asignados: ${mentions.join(" y ")}` : "")
       });
     } else {
       await interaction.reply({

@@ -8,8 +8,6 @@ import {
 
 import {
   RIOT_TOKEN,
-  RIOT_ACCOUNT_BASE,
-  RIOT_SUMMONER_BASE,
   PROFILE_ICON_VERSION
 } from "../../constants/mainConst";
 
@@ -17,9 +15,36 @@ import fetch from "node-fetch";
 import { RiotAccountResponse, SummonerResponse } from "../../types/riot";
 import { SessionManager } from "../../session/sessionManager";
 
+const SERVER_REGION_MAP: Record<string, string> = {
+  EUW: "euw1",
+  LAN: "la1",
+  LAS: "la2",
+  NA: "na1"
+};
+
+const ACCOUNT_REGIONS: Record<string, string> = {
+  EUW: "europe",
+  LAN: "americas",
+  LAS: "americas",
+  NA: "americas"
+};
+
 export async function summonerInfo(interaction: ModalSubmitInteraction) {
   const summonerName = interaction.fields.getTextInputValue("summoner-name").trim();
   const tag = interaction.fields.getTextInputValue("summoner-tag").trim();
+  const serverInput = interaction.fields.getTextInputValue("summoner-server").trim().toUpperCase();
+
+  const allowedServers = Object.keys(SERVER_REGION_MAP);
+  if (!allowedServers.includes(serverInput)) {
+    await interaction.reply({
+      ephemeral: true,
+      content: "❌ Servidor inválido. Solo se permiten: EUW, LAN, LAS, NA."
+    });
+    return;
+  }
+
+  const serverRegion = SERVER_REGION_MAP[serverInput];
+  const accountRegion = ACCOUNT_REGIONS[serverInput];
 
   try {
     await interaction.reply({
@@ -28,7 +53,7 @@ export async function summonerInfo(interaction: ModalSubmitInteraction) {
     });
 
     const accountRes = await fetch(
-      `${RIOT_ACCOUNT_BASE}/riot/account/v1/accounts/by-riot-id/${encodeURIComponent(summonerName)}/${encodeURIComponent(tag)}`,
+      `https://${accountRegion}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${encodeURIComponent(summonerName)}/${encodeURIComponent(tag)}`,
       {
         headers: { "X-Riot-Token": RIOT_TOKEN }
       }
@@ -44,7 +69,7 @@ export async function summonerInfo(interaction: ModalSubmitInteraction) {
     const accountData = (await accountRes.json()) as RiotAccountResponse;
 
     const summonerRes = await fetch(
-      `${RIOT_SUMMONER_BASE}/lol/summoner/v4/summoners/by-puuid/${accountData.puuid}`,
+      `https://${serverRegion}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${accountData.puuid}`,
       {
         headers: { "X-Riot-Token": RIOT_TOKEN }
       }
@@ -68,7 +93,7 @@ export async function summonerInfo(interaction: ModalSubmitInteraction) {
 
     // Fetch ranked info
     const rankedRes = await fetch(
-      `${RIOT_SUMMONER_BASE}/lol/league/v4/entries/by-puuid/${accountData.puuid}`,
+      `https://${serverRegion}.api.riotgames.com/lol/league/v4/entries/by-puuid/${accountData.puuid}`,
       {
         headers: { "X-Riot-Token": RIOT_TOKEN }
       }
@@ -91,6 +116,9 @@ export async function summonerInfo(interaction: ModalSubmitInteraction) {
       summonerLevel: summonerData.summonerLevel,
       profileIconId: summonerData.profileIconId,
       expectedIconId: verificationIconId,
+      server: serverInput,
+      serverRegion: serverRegion,
+      accountRegion: accountRegion,
       ranked: {
         solo: rankedSolo,
         flex: rankedFlex
@@ -111,7 +139,7 @@ export async function summonerInfo(interaction: ModalSubmitInteraction) {
         `**Invocador:** ${summonerName}#${tag}\n` +
         `**Nivel:** ${summonerData.summonerLevel}\n` +
         eloLine + flexLine +
-        `\n\nSi esta es tu cuenta, pulsa en "Continuar" para completar la verificación.`
+        `\n\nSi esta es tu cuenta, pulsa en \"Continuar\" para completar la verificación.`
       )
       .setThumbnail(iconUrl)
       .setColor("Green");
