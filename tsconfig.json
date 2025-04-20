@@ -1,4 +1,7 @@
 {
+    "include": [
+      "src/**/*"
+    ],
     "compilerOptions": {
       "target": "ES2021",
       "module": "CommonJS",
@@ -7,7 +10,10 @@
       "rootDir": "./src",
       "strict": true,
       "esModuleInterop": true,
-      "skipLibCheck": true
+      "skipLibCheck": true,
+      "resolveJsonModule": true,
+      "declaration": true,
+      "forceConsistentCasingInFileNames": true
     }
   }
   
