@@ -35,11 +35,7 @@ import {
       new ButtonBuilder()
         .setCustomId("start-verification")
         .setLabel("Vincular cuenta")
-        .setStyle(ButtonStyle.Primary),
-      new ButtonBuilder()
-        .setCustomId("refresh-data")
-        .setLabel("Actualizar datos")
-        .setStyle(ButtonStyle.Secondary)
+        .setStyle(ButtonStyle.Primary)
     );
   
     await textChannel.send({ embeds: [embed], components: [row] });

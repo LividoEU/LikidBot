@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction, PermissionsBitField } from "discord.js";
-import { deployVerificationMessage } from "../setup/deployVerificationMessage";
+import { deployVerificationMessage } from "../riot/account-verifier/deployVerificationMessage";
 
 export const data = new SlashCommandBuilder()
   .setName("iniciar-verificacion")
