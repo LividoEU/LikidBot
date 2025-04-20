@@ -11,10 +11,12 @@
   "description": "",
   "dependencies": {
     "discord.js": "^14.18.0",
-    "dotenv": "^16.5.0"
+    "dotenv": "^16.5.0",
+    "node-fetch": "^2.7.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.1",
+    "@types/node-fetch": "^2.6.12",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"

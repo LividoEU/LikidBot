@@ -5,8 +5,8 @@ import {
   } from "discord.js";
   import * as fs from "fs/promises";
   import * as path from "path";
-  import { LikidClient } from "../../types/LikidClient";
-  import { CommandModule } from "../../types/CommandModule";
+  import { LikidClient } from "../../types/likidClient";
+  import { CommandModule } from "../../types/commandModule";
   
   export async function registerCommands(client: LikidClient) {
     const commandsPath = path.join(__dirname, "../../commands");

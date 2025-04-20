@@ -9,7 +9,7 @@ import {
   export async function showSummonerInfoModal(interaction: ButtonInteraction) {
     const modal = new ModalBuilder()
       .setCustomId("summoner-info")
-      .setTitle("🧠 Introduce tu cuenta de LoL");
+      .setTitle("Introduce tu cuenta de LoL");
   
     const nameInput = new TextInputBuilder()
       .setCustomId("summoner-name")

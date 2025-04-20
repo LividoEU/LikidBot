@@ -1,6 +1,6 @@
 import { Client, GatewayIntentBits, Partials, Collection } from "discord.js";
 import * as dotenv from "dotenv";
-import { LikidClient } from "./types/LikidClient";
+import { LikidClient } from "./types/likidClient";
 import { registerCommands } from "./interactions/handlers/handleCommands";
 import { handleButtonInteraction } from "./interactions/handlers/handleButtons";
 import { handleModalInteraction } from "./interactions/handlers/handleModals";
