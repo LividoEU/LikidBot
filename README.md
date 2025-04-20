@@ -23,4 +23,88 @@ More features coming soon...
 
 ```bash
 git clone https://github.com/LividoEU/LikidBot.git
-cd LikidBot
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Set up environment variables
+
+```env
+DISCORD_TOKEN=your_discord_bot_token
+CLIENT_ID=your_discord_app_client_id
+CLIENT_SECRET=your_discord_client_secret
+GUILD_ID=your_discord_server_id
+RIOT_API_KEY=your_riot_api_key
+```
+
+---
+
+## 📁 Project Structure
+
+```text
+src/
+├── commands/         # Slash command definitions
+├── events/           # Event listeners (ready, interactionCreate, etc.)
+├── interactions/     # Button and modal handlers
+├── riot/             # Riot API integration
+├── services/         # Verification logic, role management, etc.
+└── index.ts          # Bot entry point
+```
+
+---
+
+## 🛠️ Development
+
+### 1. Start with live-reloading (recommended)
+
+```bash
+npx nodemon
+```
+
+### 1.1 Start manually
+
+```bash
+npx ts-node src/index.ts
+```
+
+---
+
+## 🔧 Build & Run
+
+### 1. Build the bot
+
+```bash
+npx tsc
+```
+
+### 2. Run compiled bot
+
+```bash
+node dist/index.js
+```
+
+---
+
+## 📌 Requirements
+
+Node.js 18+
+
+Discord bot token
+
+Riot Games API key (for LoL verification features)
+
+A Discord server to test the bot
+
+---
+
+## 📃 License
+
+MIT
+
+---
+
+Made with ❤️ by Livido
