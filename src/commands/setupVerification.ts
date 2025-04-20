@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction, PermissionsBitField } from "discord.js";
-import { deployVerificationMessage } from "../setup/deploy-verification-message";
+import { deployVerificationMessage } from "../setup/deployVerificationMessage";
 
 export const data = new SlashCommandBuilder()
   .setName("setup-verification")
