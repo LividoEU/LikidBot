@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { RIOT_TOKEN } from "../../constants/consts";
 import { RiotAccountResponse, SummonerResponse } from "../types/riot";
-import { VerificationSession } from "../types/sessions";
+import { VerificationSession } from "../types/session";
 
 // Maps server code to API routing regions
 const SERVER_REGION_MAP: Record<string, string> = {
