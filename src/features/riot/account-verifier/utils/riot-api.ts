@@ -1,7 +1,8 @@
 import fetch from "node-fetch";
-import { RIOT_TOKEN } from "../../constants/consts";
-import { RiotAccountResponse, SummonerResponse } from "../types/riot";
-import { VerificationSession } from "../types/session";
+import { RIOT_TOKEN } from "../../constants/consts.js";
+import { RiotAccountResponse, SummonerResponse } from "../types/riot.js";
+import { VerificationSession } from "../types/session.js";
+import { RankedEntry } from "../types/ranked-entry.js";
 
 // Maps server code to API routing regions
 const SERVER_REGION_MAP: Record<string, string> = {
@@ -77,9 +78,9 @@ export async function fetchRankedInfo(puuid: string, server: string): Promise<Ve
     };
   }
 
-  const data = await res.json();
-  const solo = data.find((e: any) => e.queueType === "RANKED_SOLO_5x5") || null;
-  const flex = data.find((e: any) => e.queueType === "RANKED_FLEX_SR") || null;
+  const data = await res.json() as RankedEntry[];
+  const solo = data.find(e => e.queueType === "RANKED_SOLO_5x5");
+  const flex = data.find(e => e.queueType === "RANKED_FLEX_SR");
 
   return {
     solo,
