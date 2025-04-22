@@ -5,12 +5,17 @@ import {
 } from "discord.js";
 import fs from "fs/promises";
 import path from "path";
-import { LikidClient } from "../types/likid-client";
-import { CommandModule } from "../types/command-module";
+import { LikidClient } from "../types/likid-client.js";
+import { CommandModule } from "../types/command-module.js";
+import { fileURLToPath } from "url";
+import { toFileUrl } from "../../../../utils/esm-path.js";
 
 export async function registerCommands(client: LikidClient): Promise<void> {
   const isDev = process.env.NODE_ENV !== "production";
   const extension = isDev ? ".ts" : ".js";
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
 
   const commandsDir = path.join(__dirname, "../commands");
   const files = await fs.readdir(commandsDir);
@@ -20,7 +25,7 @@ export async function registerCommands(client: LikidClient): Promise<void> {
 
   for (const file of commandFiles) {
     const filePath = path.join(commandsDir, file);
-    const commandModule = (await import(filePath)) as CommandModule;
+    const commandModule = await import(toFileUrl(filePath));
 
     if (typeof commandModule.data?.toJSON === "function" && typeof commandModule.execute === "function") {
       client.commands.set(commandModule.data.name, commandModule);

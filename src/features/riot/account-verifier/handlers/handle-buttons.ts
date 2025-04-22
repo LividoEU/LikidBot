@@ -6,25 +6,25 @@ export async function handleButtonInteraction(interaction: ButtonInteraction): P
   try {
     switch (customId) {
       case "start-verification": {
-        const { startVerification } = await import("../messages/start-verification");
+        const { startVerification } = await import("../messages/start-verification.js");
         await startVerification(interaction);
         break;
       }
 
       case "acknowledge-verification": {
-        const { showSummonerInfoModal } = await import("../modals/summoner-info-modal");
+        const { showSummonerInfoModal } = await import("../modals/summoner-info-modal.js");
         await showSummonerInfoModal(interaction);
         break;
       }
 
       case "confirm-account": {
-        const { confirmAccount } = await import("../messages/confirm-account");
+        const { confirmAccount } = await import("../messages/confirm-account.js");
         await confirmAccount(interaction);
         break;
       }
 
       case "verify-icon-change": {
-        const { verifyIconChange } = await import("../messages/verify-icon-change");
+        const { verifyIconChange } = await import("../messages/verify-icon-change.js");
         await verifyIconChange(interaction);
         break;
       }

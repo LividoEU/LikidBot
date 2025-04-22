@@ -1,8 +1,8 @@
 import { Client, GatewayIntentBits, Partials, Collection } from "discord.js";
 import dotenv from "dotenv";
-import { LikidClient } from "./features/riot/account-verifier/types/likid-client";
-import { setupAccountVerifier } from "./features/riot/account-verifier/account-verifier";
-import { CommandModule } from "./features/riot/account-verifier/types/command-module";
+import { LikidClient } from "./features/riot/account-verifier/types/likid-client.js";
+import { setupAccountVerifier } from "./features/riot/account-verifier/account-verifier.js";
+import { CommandModule } from "./features/riot/account-verifier/types/command-module.js";
 
 dotenv.config();
 

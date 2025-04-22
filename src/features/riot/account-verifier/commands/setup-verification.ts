@@ -4,7 +4,7 @@ import {
   PermissionsBitField,
   SlashCommandBuilder
 } from "discord.js";
-import { deployVerificationMessage } from "../messages/deploy-verification-message";
+import { deployVerificationMessage } from "../messages/deploy-verification-message.js";
 
 export const data = new SlashCommandBuilder()
   .setName("iniciar-verificacion")

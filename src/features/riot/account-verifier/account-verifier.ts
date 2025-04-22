@@ -1,8 +1,8 @@
 // src/features/riot-verification/accountVerifier.ts
-import { LikidClient } from "./types/likid-client";
-import { registerCommands } from "./handlers/handle-commands";
-import { handleButtonInteraction } from "./handlers/handle-buttons";
-import { handleModalInteraction } from "./handlers/handle-modals";
+import { LikidClient } from "./types/likid-client.js";
+import { registerCommands } from "./handlers/handle-commands.js";
+import { handleButtonInteraction } from "./handlers/handle-buttons.js";
+import { handleModalInteraction } from "./handlers/handle-modals.js";
 import { Interaction, MessageFlags } from "discord.js";
 
 export function setupAccountVerifier(client: LikidClient) {

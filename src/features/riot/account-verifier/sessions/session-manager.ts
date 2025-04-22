@@ -1,4 +1,4 @@
-import { VerificationSession } from "../types/session";
+import { VerificationSession } from "../types/session.js";
 
 type ExpiringSession = {
   data: VerificationSession;

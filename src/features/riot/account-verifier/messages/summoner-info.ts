@@ -11,10 +11,10 @@ import {
   fetchRiotAccountByRiotId,
   fetchSummonerByPuuid,
   fetchRankedInfo
-} from "../utils/riot-api";
-import { SessionManager } from "../sessions/session-manager";
-import { RiotAccountResponse, SummonerResponse } from "../types/riot";
-import { PROFILE_ICON_VERSION } from "../../constants/consts";
+} from "../utils/riot-api.js";
+import { SessionManager } from "../sessions/session-manager.js";
+import { RiotAccountResponse, SummonerResponse } from "../types/riot.js";
+import { PROFILE_ICON_VERSION } from "../../constants/consts.js";
 
 export async function summonerInfo(interaction: ModalSubmitInteraction): Promise<void> {
   const summonerName = interaction.fields.getTextInputValue("summoner-name").trim();

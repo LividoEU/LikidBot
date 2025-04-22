@@ -1,7 +1,7 @@
 import { ButtonInteraction, MessageFlags } from "discord.js";
-import { SessionManager } from "../sessions/session-manager";
-import { fetchSummonerByPuuid } from "../utils/riot-api";
-import { tierTranslation } from "../../constants/tiers";
+import { SessionManager } from "../sessions/session-manager.js";
+import { fetchSummonerByPuuid } from "../utils/riot-api.js";
+import { tierTranslation } from "../../constants/tiers.js";
 
 export async function verifyIconChange(interaction: ButtonInteraction): Promise<void> {
   const session = SessionManager.get(interaction.user.id);

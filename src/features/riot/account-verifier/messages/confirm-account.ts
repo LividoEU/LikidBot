@@ -6,8 +6,8 @@ import {
   ActionRowBuilder,
   MessageFlags
 } from "discord.js";
-import { SessionManager } from "../sessions/session-manager";
-import { PROFILE_ICON_VERSION } from "../../constants/consts";
+import { SessionManager } from "../sessions/session-manager.js";
+import { PROFILE_ICON_VERSION } from "../../constants/consts.js";
 
 export async function confirmAccount(interaction: ButtonInteraction): Promise<void> {
   const session = SessionManager.get(interaction.user.id);

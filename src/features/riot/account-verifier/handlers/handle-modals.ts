@@ -6,7 +6,7 @@ export async function handleModalInteraction(interaction: ModalSubmitInteraction
   try {
     switch (customId) {
       case "summoner-info": {
-        const { summonerInfo } = await import("../messages/summoner-info");
+        const { summonerInfo } = await import("../messages/summoner-info.js");
         await summonerInfo(interaction);
         break;
       }
