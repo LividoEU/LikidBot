@@ -34,7 +34,7 @@ DISCORD_TOKEN=your_discord_bot_token
 CLIENT_ID=your_discord_app_client_id
 CLIENT_SECRET=your_discord_client_secret
 GUILD_ID=your_discord_server_id
-RIOT_API_KEY=your_riot_api_key
+RIOT_TOKEN=your_riot_api_key
 ```
 
 ---

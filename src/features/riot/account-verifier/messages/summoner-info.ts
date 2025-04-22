@@ -68,7 +68,10 @@ export async function summonerInfo(interaction: ModalSubmitInteraction): Promise
       role: roleInput,
       serverRegion: ranked.serverRegion,
       accountRegion: ranked.accountRegion,
-      ranked
+      ranked: ranked.solo || ranked.flex ? {
+        solo: ranked.solo,
+        flex: ranked.flex
+      } : undefined
     });
 
     const iconUrl = `https://ddragon.leagueoflegends.com/cdn/${PROFILE_ICON_VERSION}/img/profileicon/${summoner.profileIconId}.png`;

@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { RIOT_TOKEN } from "../../constants/consts.js";
+import { RIOT_TOKEN } from "../../../../config.js";
 import { RiotAccountResponse, SummonerResponse } from "../types/riot.js";
 import { VerificationSession } from "../types/session.js";
 import { RankedEntry } from "../types/ranked-entry.js";

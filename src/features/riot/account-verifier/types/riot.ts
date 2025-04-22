@@ -12,4 +12,3 @@ export interface RiotAccountResponse {
     revisionDate: number;
     summonerLevel: number;
   }
-  

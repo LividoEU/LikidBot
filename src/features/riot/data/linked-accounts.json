@@ -1,0 +1,43 @@
+{
+  "252405462291578880": {
+    "puuid": "nXgm1wvsRg3nkqZRfEFXBXEFlDza4mpra81aCMq9ZWrxHIg9Z6f11w4chUa3h8kjYqfYpcJ-mSSlcQ",
+    "gameName": "TessbTv",
+    "tagLine": "EUW",
+    "summonerLevel": 40,
+    "profileIconId": 2073,
+    "server": "EUW",
+    "role": "MID",
+    "serverRegion": "euw1",
+    "accountRegion": "europe",
+    "ranked": {
+      "solo": {
+        "queueType": "RANKED_SOLO_5x5",
+        "tier": "PLATINUM",
+        "rank": "IV",
+        "leaguePoints": 46,
+        "wins": 21,
+        "losses": 12,
+        "leagueId": "181dae28-faf4-449b-833c-d12a1cdecaf2",
+        "summonerId": "R31rKGKC4syNW8MLuKoJHg1IiShGqhmDcOQr3wuZd0OOhO0o",
+        "veteran": false,
+        "inactive": false,
+        "freshBlood": false,
+        "hotStreak": false
+      },
+      "flex": {
+        "queueType": "RANKED_FLEX_SR",
+        "tier": "PLATINUM",
+        "rank": "II",
+        "leaguePoints": 93,
+        "wins": 15,
+        "losses": 7,
+        "leagueId": "520a266f-36db-4e3c-a540-002292ed8590",
+        "summonerId": "R31rKGKC4syNW8MLuKoJHg1IiShGqhmDcOQr3wuZd0OOhO0o",
+        "veteran": false,
+        "inactive": false,
+        "freshBlood": false,
+        "hotStreak": false
+      }
+    }
+  }
+}

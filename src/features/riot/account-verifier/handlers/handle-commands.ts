@@ -27,7 +27,10 @@ export async function registerCommands(client: LikidClient): Promise<void> {
     const filePath = path.join(commandsDir, file);
     const commandModule = await import(toFileUrl(filePath));
 
-    if (typeof commandModule.data?.toJSON === "function" && typeof commandModule.execute === "function") {
+    if (
+      typeof commandModule.data?.toJSON === "function" &&
+      typeof commandModule.execute === "function"
+    ) {
       client.commands.set(commandModule.data.name, commandModule);
       commandsForAPI.push(commandModule.data.toJSON());
     } else {
@@ -37,10 +40,13 @@ export async function registerCommands(client: LikidClient): Promise<void> {
 
   const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN!);
 
-  await rest.put(
-    Routes.applicationCommands(process.env.CLIENT_ID!),
-    { body: commandsForAPI }
-  );
+  const commandRoute = isDev
+    ? Routes.applicationGuildCommands(process.env.CLIENT_ID!, process.env.GUILD_ID!)
+    : Routes.applicationCommands(process.env.CLIENT_ID!);
 
-  console.log(`${commandsForAPI.length} comandos registrados automáticamente.`);
+  await rest.put(commandRoute, { body: commandsForAPI });
+
+  console.log(
+    `${commandsForAPI.length} comandos registrados ${isDev ? "localmente (guild)" : "globalmente"}`
+  );
 }

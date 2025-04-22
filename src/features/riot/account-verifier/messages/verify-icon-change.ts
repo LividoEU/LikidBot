@@ -2,6 +2,7 @@ import { ButtonInteraction, MessageFlags } from "discord.js";
 import { SessionManager } from "../sessions/session-manager.js";
 import { fetchSummonerByPuuid } from "../utils/riot-api.js";
 import { tierTranslation } from "../../constants/tiers.js";
+import { storeLinkedAccount } from "../utils/store-linked-account.js";
 
 export async function verifyIconChange(interaction: ButtonInteraction): Promise<void> {
   const session = SessionManager.get(interaction.user.id);
@@ -65,6 +66,8 @@ export async function verifyIconChange(interaction: ButtonInteraction): Promise<
         }
       }
     }
+
+    await storeLinkedAccount(interaction.user.id, session);
 
     await interaction.reply({
       flags: MessageFlags.Ephemeral,

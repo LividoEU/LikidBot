@@ -12,6 +12,7 @@
     "resolveJsonModule": true,
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "NodeNext",
+    "typeRoots": ["./src/types", "./node_modules/@types"]
   }
 }
