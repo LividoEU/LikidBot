@@ -108,7 +108,7 @@ export async function summonerInfo(interaction: ModalSubmitInteraction): Promise
   } catch (err) {
     console.error("Riot API Error:", err);
     await interaction.editReply({
-      content: "❌ Error inesperado."
+      content: `❌ ${err}`
     });
   }
 }

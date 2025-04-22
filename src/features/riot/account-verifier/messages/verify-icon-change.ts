@@ -77,7 +77,7 @@ export async function verifyIconChange(interaction: ButtonInteraction): Promise<
     console.error("Error al verificar icono:", error);
     await interaction.reply({
       flags: MessageFlags.Ephemeral,
-      content: "🛑 Error inesperado."
+      content: "❌ Error inesperado."
     });
   }
 }
