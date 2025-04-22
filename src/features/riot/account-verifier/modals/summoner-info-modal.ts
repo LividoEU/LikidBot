@@ -32,6 +32,7 @@ export async function showSummonerInfoModal(interaction: ButtonInteraction): Pro
     .setLabel("Servidor (EUW, LAN, LAS, NA)")
     .setPlaceholder("Ej: EUW")
     .setRequired(true)
+    .setMinLength(2)
     .setStyle(TextInputStyle.Short);
 
   const roleInput = new TextInputBuilder()
@@ -39,6 +40,7 @@ export async function showSummonerInfoModal(interaction: ButtonInteraction): Pro
   .setLabel("Rol (Top, Jgl, Mid, Adc, Supp)")
   .setPlaceholder("Ej: Top")
   .setRequired(true)
+  .setMinLength(3)
   .setStyle(TextInputStyle.Short);
 
   modal.addComponents(
