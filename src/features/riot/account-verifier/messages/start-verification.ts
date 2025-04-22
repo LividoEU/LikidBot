@@ -3,12 +3,13 @@ import {
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
-  InteractionReplyOptions
+  InteractionReplyOptions,
+  MessageFlags
 } from "discord.js";
 
 export async function startVerification(interaction: ButtonInteraction): Promise<void> {
   const reply: InteractionReplyOptions = {
-    ephemeral: true,
+    flags: MessageFlags.Ephemeral,
     content:
       "Para comenzar el proceso de verificación, asegúrate de tener acceso a tu cuenta de League of Legends.\n\n" +
       "Se te pedirá que cambies tu icono de invocador más adelante como método de validación.",

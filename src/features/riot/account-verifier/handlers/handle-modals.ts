@@ -1,4 +1,4 @@
-import { ModalSubmitInteraction } from "discord.js";
+import { MessageFlags, ModalSubmitInteraction } from "discord.js";
 
 export async function handleModalInteraction(interaction: ModalSubmitInteraction): Promise<void> {
   const { customId } = interaction;
@@ -16,7 +16,7 @@ export async function handleModalInteraction(interaction: ModalSubmitInteraction
         if (!interaction.replied && !interaction.deferred) {
           await interaction.reply({
             content: "❌ Este formulario no está soportado.",
-            ephemeral: true
+            flags: MessageFlags.Ephemeral
           });
         }
         break;
@@ -26,7 +26,7 @@ export async function handleModalInteraction(interaction: ModalSubmitInteraction
     if (!interaction.replied && !interaction.deferred) {
       await interaction.reply({
         content: "❌ Error al manejar el formulario.",
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
     }
   }

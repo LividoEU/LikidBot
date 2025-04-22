@@ -1,4 +1,4 @@
-import { ButtonInteraction } from "discord.js";
+import { ButtonInteraction, MessageFlags } from "discord.js";
 
 export async function handleButtonInteraction(interaction: ButtonInteraction): Promise<void> {
   const { customId } = interaction;
@@ -37,7 +37,7 @@ export async function handleButtonInteraction(interaction: ButtonInteraction): P
     if (!interaction.replied && !interaction.deferred) {
       await interaction.reply({
         content: "❌ Error al manejar el botón.",
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
     }
   }

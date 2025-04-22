@@ -1,4 +1,4 @@
-import { ButtonInteraction } from "discord.js";
+import { ButtonInteraction, MessageFlags } from "discord.js";
 import { SessionManager } from "../sessions/session-manager";
 import { fetchSummonerByPuuid } from "../utils/riot-api";
 import { tierTranslation } from "../../constants/tiers";
@@ -8,7 +8,7 @@ export async function verifyIconChange(interaction: ButtonInteraction): Promise<
 
   if (!session) {
     await interaction.reply({
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
       content: "❌ No se encontró ninguna sesión activa. Por favor, vuelve a comenzar el proceso."
     });
     return;
@@ -20,7 +20,7 @@ export async function verifyIconChange(interaction: ButtonInteraction): Promise<
     const matched = updatedSummoner.profileIconId === session.expectedIconId;
     if (!matched) {
       await interaction.reply({
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
         content:
           "❌ El icono actual no coincide con el requerido.\n" +
           "Asegúrate de haber guardado los cambios y vuelve a intentarlo."
@@ -57,7 +57,7 @@ export async function verifyIconChange(interaction: ButtonInteraction): Promise<
     }
 
     await interaction.reply({
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
       content:
         "✅ Icono verificado correctamente. Tu cuenta ha sido vinculada con éxito." +
         (mentions.length ? `\nRoles asignados: ${mentions.join(" y ")}` : "")
@@ -66,7 +66,7 @@ export async function verifyIconChange(interaction: ButtonInteraction): Promise<
   } catch (error) {
     console.error("❌ Error al verificar icono:", error);
     await interaction.reply({
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
       content: "❌ Error inesperado al contactar con Riot API."
     });
   }

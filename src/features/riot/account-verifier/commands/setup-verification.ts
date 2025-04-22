@@ -1,5 +1,6 @@
 import {
   ChatInputCommandInteraction,
+  MessageFlags,
   PermissionsBitField,
   SlashCommandBuilder
 } from "discord.js";
@@ -13,12 +14,12 @@ export async function execute(interaction: ChatInputCommandInteraction): Promise
   if (!interaction.memberPermissions?.has(PermissionsBitField.Flags.Administrator)) {
     await interaction.reply({
       content: "❌ Solo administradores pueden usar este comando.",
-      ephemeral: true
+      flags: MessageFlags.Ephemeral
     });
     return;
   }
 
-  await interaction.deferReply({ ephemeral: true });
+  await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
   await deployVerificationMessage(interaction.channel!);
 

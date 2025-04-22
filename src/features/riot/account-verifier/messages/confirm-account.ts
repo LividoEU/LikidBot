@@ -3,7 +3,8 @@ import {
   EmbedBuilder,
   ButtonBuilder,
   ButtonStyle,
-  ActionRowBuilder
+  ActionRowBuilder,
+  MessageFlags
 } from "discord.js";
 import { SessionManager } from "../sessions/session-manager";
 import { PROFILE_ICON_VERSION } from "../../constants/consts";
@@ -13,7 +14,7 @@ export async function confirmAccount(interaction: ButtonInteraction): Promise<vo
 
   if (!session) {
     await interaction.reply({
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
       content: "❌ No se encontró ninguna sesión activa. Por favor, vuelve a comenzar el proceso."
     });
     return;
@@ -35,7 +36,7 @@ export async function confirmAccount(interaction: ButtonInteraction): Promise<vo
   );
 
   await interaction.reply({
-    ephemeral: true,
+    flags: MessageFlags.Ephemeral,
     embeds: [embed],
     components: [row]
   });

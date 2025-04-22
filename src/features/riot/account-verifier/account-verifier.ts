@@ -3,7 +3,7 @@ import { LikidClient } from "./types/likid-client";
 import { registerCommands } from "./handlers/handle-commands";
 import { handleButtonInteraction } from "./handlers/handle-buttons";
 import { handleModalInteraction } from "./handlers/handle-modals";
-import { Interaction } from "discord.js";
+import { Interaction, MessageFlags } from "discord.js";
 
 export function setupAccountVerifier(client: LikidClient) {
   client.once("ready", async () => {
@@ -33,7 +33,7 @@ export function setupAccountVerifier(client: LikidClient) {
       ) {
         await interaction.reply({
           content: "❌ Ocurrió un error al manejar tu interacción.",
-          ephemeral: true
+          flags: MessageFlags.Ephemeral
         });
       }
     }

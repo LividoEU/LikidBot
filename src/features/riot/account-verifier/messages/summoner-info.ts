@@ -3,7 +3,8 @@ import {
   EmbedBuilder,
   ButtonBuilder,
   ButtonStyle,
-  ActionRowBuilder
+  ActionRowBuilder,
+  MessageFlags
 } from "discord.js";
 
 import {
@@ -23,14 +24,14 @@ export async function summonerInfo(interaction: ModalSubmitInteraction): Promise
   const allowedServers = ["EUW", "LAN", "LAS", "NA"];
   if (!allowedServers.includes(serverInput)) {
     await interaction.reply({
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
       content: "❌ Servidor inválido. Solo se permiten: EUW, LAN, LAS, NA."
     });
     return;
   }
 
   await interaction.reply({
-    ephemeral: true,
+    flags: MessageFlags.Ephemeral,
     content: `🔍 Buscando cuenta **${summonerName}#${tag}**...`
   });
 
