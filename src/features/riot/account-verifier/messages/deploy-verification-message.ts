@@ -9,7 +9,7 @@ import {
 
 export async function deployVerificationMessage(channel: Channel): Promise<void> {
   if (!channel.isTextBased() || !("send" in channel)) {
-    console.error("❌ El canal no es de texto o no puede enviar mensajes.");
+    console.error("El canal no es de texto o no puede enviar mensajes.");
     return;
   }
 
@@ -21,11 +21,11 @@ export async function deployVerificationMessage(channel: Channel): Promise<void>
       try {
         await message.delete();
       } catch (err) {
-        console.warn(`⚠️ No se pudo borrar el mensaje ${message.id}:`, err);
+        console.warn(`No se pudo borrar el mensaje ${message.id}:`, err);
       }
     }
   } catch (err) {
-    console.error("❌ Error al intentar limpiar el canal:", err);
+    console.error("Error al intentar limpiar el canal:", err);
   }
 
   const embed = new EmbedBuilder()
@@ -36,7 +36,7 @@ export async function deployVerificationMessage(channel: Channel): Promise<void>
   const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
     new ButtonBuilder()
       .setCustomId("start-verification")
-      .setLabel("Vincular cuenta")
+      .setLabel("🔗 Vincular cuenta")
       .setStyle(ButtonStyle.Primary)
   );
 

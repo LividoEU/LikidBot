@@ -31,7 +31,7 @@ export async function registerCommands(client: LikidClient): Promise<void> {
       client.commands.set(commandModule.data.name, commandModule);
       commandsForAPI.push(commandModule.data.toJSON());
     } else {
-      console.warn(`⚠️ Comando inválido o mal estructurado: ${file}`);
+      console.warn(`Comando inválido o mal estructurado: ${file}`);
     }
   }
 
@@ -42,5 +42,5 @@ export async function registerCommands(client: LikidClient): Promise<void> {
     { body: commandsForAPI }
   );
 
-  console.log(`✅ ${commandsForAPI.length} comandos registrados automáticamente.`);
+  console.log(`${commandsForAPI.length} comandos registrados automáticamente.`);
 }

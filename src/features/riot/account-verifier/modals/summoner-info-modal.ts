@@ -14,7 +14,7 @@ export async function showSummonerInfoModal(interaction: ButtonInteraction): Pro
   const nameInput = new TextInputBuilder()
     .setCustomId("summoner-name")
     .setLabel("Nombre de invocador")
-    .setPlaceholder("Ej: MiCuentaSmurf")
+    .setPlaceholder("Ej: MiCuentaMain")
     .setRequired(true)
     .setMinLength(3)
     .setStyle(TextInputStyle.Short);

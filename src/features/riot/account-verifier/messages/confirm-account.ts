@@ -23,16 +23,16 @@ export async function confirmAccount(interaction: ButtonInteraction): Promise<vo
   const iconUrl = `https://ddragon.leagueoflegends.com/cdn/${PROFILE_ICON_VERSION}/img/profileicon/${session.expectedIconId}.png`;
 
   const embed = new EmbedBuilder()
-    .setTitle("🎯 Verificación de cuenta")
+    .setTitle("🎯 Verificación de cuenta 🎯")
     .setDescription("Para verificar que eres el dueño de esta cuenta, cambia tu icono en el cliente de LoL al siguiente:")
     .setImage(iconUrl)
-    .setColor("Orange");
+    .setColor("Blurple");
 
   const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
     new ButtonBuilder()
       .setCustomId("verify-icon-change")
-      .setLabel("He cambiado el icono")
-      .setStyle(ButtonStyle.Primary)
+      .setLabel("☑️ He cambiado el icono")
+      .setStyle(ButtonStyle.Secondary)
   );
 
   await interaction.reply({

@@ -12,7 +12,7 @@ export async function handleModalInteraction(interaction: ModalSubmitInteraction
       }
 
       default:
-        console.warn(`⚠️ Modal sin manejar: ${customId}`);
+        console.warn(`Modal sin manejar: ${customId}`);
         if (!interaction.replied && !interaction.deferred) {
           await interaction.reply({
             content: "❌ Este formulario no está soportado.",
@@ -22,7 +22,7 @@ export async function handleModalInteraction(interaction: ModalSubmitInteraction
         break;
     }
   } catch (err) {
-    console.error(`❌ Error al manejar el modal "${customId}":`, err);
+    console.error(`Error al manejar el modal "${customId}":`, err);
     if (!interaction.replied && !interaction.deferred) {
       await interaction.reply({
         content: "❌ Error al manejar el formulario.",

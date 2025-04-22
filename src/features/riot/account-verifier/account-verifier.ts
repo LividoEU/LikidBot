@@ -7,7 +7,7 @@ import { Interaction, MessageFlags } from "discord.js";
 
 export function setupAccountVerifier(client: LikidClient) {
   client.once("ready", async () => {
-    console.log(`✅ Logged in as ${client.user?.tag}`);
+    console.log(`Logged in as ${client.user?.tag}`);
     await registerCommands(client);
   });
 
@@ -22,7 +22,7 @@ export function setupAccountVerifier(client: LikidClient) {
         await handleModalInteraction(interaction);
       }
     } catch (error) {
-      console.error("❌ Error en interactionCreate:", error);
+      console.error(" Error en interactionCreate:", error);
   
       if (
         (interaction.isChatInputCommand() ||

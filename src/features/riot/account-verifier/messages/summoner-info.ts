@@ -82,7 +82,7 @@ export async function summonerInfo(interaction: ModalSubmitInteraction): Promise
       : `\n**Flex:** Sin posicionar`;
 
     const embed = new EmbedBuilder()
-      .setTitle("🧾 Datos de tu cuenta")
+      .setTitle("👤 Datos de tu cuenta 👤")
       .setDescription(
         `**Invocador:** ${summonerName}#${tag}\n` +
         `**Nivel:** ${summoner.summonerLevel}\n` +
@@ -90,13 +90,13 @@ export async function summonerInfo(interaction: ModalSubmitInteraction): Promise
         `\n\nSi esta es tu cuenta, pulsa en "Continuar" para completar la verificación.`
       )
       .setThumbnail(iconUrl)
-      .setColor("Green");
+      .setColor("Blurple");
 
     const continueRow = new ActionRowBuilder<ButtonBuilder>().addComponents(
       new ButtonBuilder()
         .setCustomId("confirm-account")
-        .setLabel("Continuar")
-        .setStyle(ButtonStyle.Primary)
+        .setLabel("⏩ Continuar")
+        .setStyle(ButtonStyle.Secondary)
     );
 
     await interaction.editReply({
@@ -106,9 +106,9 @@ export async function summonerInfo(interaction: ModalSubmitInteraction): Promise
     });
 
   } catch (err) {
-    console.error("❌ Riot API Error:", err);
+    console.error("Riot API Error:", err);
     await interaction.editReply({
-      content: "❌ Error inesperado al contactar con Riot API."
+      content: "❌ Error inesperado."
     });
   }
 }

@@ -30,10 +30,10 @@ export async function handleButtonInteraction(interaction: ButtonInteraction): P
       }
 
       default:
-        console.warn(`⚠️ Botón sin manejar: ${customId}`);
+        console.warn(`Botón sin manejar: ${customId}`);
     }
   } catch (err) {
-    console.error(`❌ Error al manejar el botón "${customId}":`, err);
+    console.error(`Error al manejar el botón "${customId}":`, err);
     if (!interaction.replied && !interaction.deferred) {
       await interaction.reply({
         content: "❌ Error al manejar el botón.",

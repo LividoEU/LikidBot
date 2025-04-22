@@ -74,10 +74,10 @@ export async function verifyIconChange(interaction: ButtonInteraction): Promise<
     });
 
   } catch (error) {
-    console.error("❌ Error al verificar icono:", error);
+    console.error("Error al verificar icono:", error);
     await interaction.reply({
       flags: MessageFlags.Ephemeral,
-      content: "❌ Error inesperado al contactar con Riot API."
+      content: "🛑 Error inesperado."
     });
   }
 }
