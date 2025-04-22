@@ -29,6 +29,12 @@ export async function handleButtonInteraction(interaction: ButtonInteraction): P
         break;
       }
 
+      case "update-summoner-data": {
+        const { updateSummonerData } = await import("../buttons/update-summoner.data.js");
+        await updateSummonerData(interaction);
+        break;
+      }
+
       default:
         console.warn(`Botón sin manejar: ${customId}`);
     }

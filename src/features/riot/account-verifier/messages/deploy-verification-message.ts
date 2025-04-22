@@ -37,7 +37,12 @@ export async function deployVerificationMessage(channel: Channel): Promise<void>
     new ButtonBuilder()
       .setCustomId("start-verification")
       .setLabel("🔗 Vincular cuenta")
-      .setStyle(ButtonStyle.Primary)
+      .setStyle(ButtonStyle.Primary),
+
+    new ButtonBuilder()
+    .setCustomId("update-summoner-data")
+    .setLabel("🔁 Actualizar datos")
+    .setStyle(ButtonStyle.Primary)
   );
 
   await textChannel.send({ embeds: [embed], components: [row] });
