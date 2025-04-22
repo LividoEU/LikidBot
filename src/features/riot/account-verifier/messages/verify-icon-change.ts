@@ -54,6 +54,16 @@ export async function verifyIconChange(interaction: ButtonInteraction): Promise<
         await member.roles.add(serverRole);
         mentions.push(`<@&${serverRole.id}>`);
       }
+
+      if (session.role) {
+        const customRole = guild.roles.cache.find(r =>
+          r.name.toLowerCase() === session.role.toLowerCase()
+        );
+        if (customRole) {
+          await member.roles.add(customRole);
+          mentions.push(`<@&${customRole.id}>`);
+        }
+      }
     }
 
     await interaction.reply({

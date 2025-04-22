@@ -34,10 +34,18 @@ export async function showSummonerInfoModal(interaction: ButtonInteraction): Pro
     .setRequired(true)
     .setStyle(TextInputStyle.Short);
 
+  const roleInput = new TextInputBuilder()
+  .setCustomId("summoner-role")
+  .setLabel("Rol (Top, Jgl, Mid, Adc, Supp)")
+  .setPlaceholder("Ej: Top")
+  .setRequired(true)
+  .setStyle(TextInputStyle.Short);
+
   modal.addComponents(
     new ActionRowBuilder<TextInputBuilder>().addComponents(nameInput),
     new ActionRowBuilder<TextInputBuilder>().addComponents(tagInput),
-    new ActionRowBuilder<TextInputBuilder>().addComponents(serverInput)
+    new ActionRowBuilder<TextInputBuilder>().addComponents(serverInput),
+    new ActionRowBuilder<TextInputBuilder>().addComponents(roleInput)
   );
 
   await interaction.showModal(modal);

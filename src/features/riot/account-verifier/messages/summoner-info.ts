@@ -20,12 +20,23 @@ export async function summonerInfo(interaction: ModalSubmitInteraction): Promise
   const summonerName = interaction.fields.getTextInputValue("summoner-name").trim();
   const tag = interaction.fields.getTextInputValue("summoner-tag").trim();
   const serverInput = interaction.fields.getTextInputValue("summoner-server").trim().toUpperCase();
+  const roleInput = interaction.fields.getTextInputValue("summoner-role").trim().toUpperCase();
 
   const allowedServers = ["EUW", "LAN", "LAS", "NA"];
+  const allowedRoles = ["TOP", "JGL", "MID", "ADC", "SUPP"];
+
   if (!allowedServers.includes(serverInput)) {
     await interaction.reply({
       flags: MessageFlags.Ephemeral,
       content: "❌ Servidor inválido. Solo se permiten: EUW, LAN, LAS, NA."
+    });
+    return;
+  }
+
+  if (!allowedRoles.includes(roleInput)) {
+    await interaction.reply({
+      flags: MessageFlags.Ephemeral,
+      content: "❌ Rol inválido. Solo se permiten: Top, Jgl, Mid, Adc, Supp."
     });
     return;
   }
@@ -54,6 +65,7 @@ export async function summonerInfo(interaction: ModalSubmitInteraction): Promise
       profileIconId: summoner.profileIconId,
       expectedIconId: verificationIconId,
       server: serverInput,
+      role: roleInput,
       serverRegion: ranked.serverRegion,
       accountRegion: ranked.accountRegion,
       ranked

@@ -6,6 +6,7 @@ export interface VerificationSession {
   profileIconId: number;
   expectedIconId: number;
   server: string;
+  role: string;
   serverRegion: string;
   accountRegion: string;
   ranked?: {
