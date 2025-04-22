@@ -1,5 +1,5 @@
 import { ButtonInteraction, MessageFlags } from "discord.js";
-import { updateSoloRanks } from "../utils/update-soloq-ranks.js";
+import { updateSingleUserRank } from "../utils/update-single-user-rank.js";
 
 const cooldownMap = new Map<string, number>();
 const COOLDOWN_MS = 5 * 60 * 1000; // 5 minutes
@@ -25,11 +25,8 @@ export async function updateSummonerData(interaction: ButtonInteraction): Promis
       content: "🔁 Actualizando datos del invocador..."
     });
 
-    await updateSoloRanks(interaction.client);
+    await updateSingleUserRank(interaction);
 
-    await interaction.editReply({
-      content: "✅ Datos actualizados correctamente."
-    });
   } catch (err) {
     console.error("Error updating summoner data:", err);
     await interaction.editReply({
