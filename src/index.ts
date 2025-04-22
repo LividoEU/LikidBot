@@ -1,9 +1,8 @@
 import { Client, GatewayIntentBits, Partials, Collection } from "discord.js";
-import * as dotenv from "dotenv";
-import { LikidClient } from "./types/likidClient";
-import { registerCommands } from "./interactions/handlers/handleCommands";
-import { handleButtonInteraction } from "./interactions/handlers/handleButtons";
-import { handleModalInteraction } from "./interactions/handlers/handleModals";
+import dotenv from "dotenv";
+import { LikidClient } from "./features/riot/account-verifier/types/likid-client";
+import { setupAccountVerifier } from "./features/riot/account-verifier/account-verifier";
+import { CommandModule } from "./features/riot/account-verifier/types/command-module";
 
 dotenv.config();
 
@@ -12,27 +11,13 @@ const client = new Client({
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent,
-    GatewayIntentBits.DirectMessages,
+    GatewayIntentBits.DirectMessages
   ],
-  partials: [Partials.Channel],
+  partials: [Partials.Channel]
 }) as LikidClient;
 
-client.commands = new Collection();
+client.commands = new Collection<string, CommandModule>();
 
-client.once("ready", async () => {
-  console.log(`✅ Logged in as ${client.user?.tag}`);
-  await registerCommands(client);
-});
+setupAccountVerifier(client);
 
-client.on("interactionCreate", async interaction => {
-  if (interaction.isChatInputCommand()) {
-    const command = client.commands.get(interaction.commandName);
-    if (command) await command.execute(interaction);
-  } else if (interaction.isButton()) {
-    await handleButtonInteraction(interaction);
-  } else if (interaction.isModalSubmit()) {
-    await handleModalInteraction(interaction);
-  }
-});
-
-client.login(process.env.DISCORD_TOKEN);
+void client.login(process.env.DISCORD_TOKEN);

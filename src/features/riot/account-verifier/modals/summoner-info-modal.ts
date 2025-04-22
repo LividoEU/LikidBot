@@ -3,10 +3,10 @@ import {
   ModalBuilder,
   TextInputBuilder,
   TextInputStyle,
-  ActionRowBuilder,
+  ActionRowBuilder
 } from "discord.js";
 
-export async function showSummonerInfoModal(interaction: ButtonInteraction) {
+export async function showSummonerInfoModal(interaction: ButtonInteraction): Promise<void> {
   const modal = new ModalBuilder()
     .setCustomId("summoner-info")
     .setTitle("Introduce tu cuenta de LoL");
@@ -34,11 +34,11 @@ export async function showSummonerInfoModal(interaction: ButtonInteraction) {
     .setRequired(true)
     .setStyle(TextInputStyle.Short);
 
-  const row1 = new ActionRowBuilder<TextInputBuilder>().addComponents(nameInput);
-  const row2 = new ActionRowBuilder<TextInputBuilder>().addComponents(tagInput);
-  const row3 = new ActionRowBuilder<TextInputBuilder>().addComponents(serverInput);
-
-  modal.addComponents(row1, row2, row3);
+  modal.addComponents(
+    new ActionRowBuilder<TextInputBuilder>().addComponents(nameInput),
+    new ActionRowBuilder<TextInputBuilder>().addComponents(tagInput),
+    new ActionRowBuilder<TextInputBuilder>().addComponents(serverInput)
+  );
 
   await interaction.showModal(modal);
 }
