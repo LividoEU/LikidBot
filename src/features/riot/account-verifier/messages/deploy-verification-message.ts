@@ -30,7 +30,7 @@ export async function deployVerificationMessage(channel: Channel): Promise<void>
 
   const embed = new EmbedBuilder()
     .setTitle("🔗 VINCULAR CUENTA PARA SHADEMY 🔗")
-    .setDescription("Para que se te asignen los roles de elo de tu cuenta adecuadamente, por favor verifica tu cuenta de League of Legends..")
+    .setDescription("Para que se te asignen los roles de elo de tu cuenta adecuadamente, por favor verifica tu cuenta de League of Legends.")
     .setColor("Blurple");
 
   const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
