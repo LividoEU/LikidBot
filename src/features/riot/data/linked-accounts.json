@@ -300,49 +300,6 @@
       }
     }
   },
-  "179123969595670529": {
-    "puuid": "Za_O7sx6CzsXd0BTdsF5aJKEf9vNe_A_RVh1uwCt_oIXSEJL-hK1obyrgJ1eAAulY2J8h079bqHK9w",
-    "gameName": "AloricMP",
-    "tagLine": "YHWH",
-    "summonerLevel": 170,
-    "profileIconId": 6645,
-    "server": "EUW",
-    "role": "JGL",
-    "serverRegion": "euw1",
-    "accountRegion": "europe",
-    "ranked": {
-      "solo": {
-        "leagueId": "5c0ecb40-0ed6-4ac8-8889-62f6e46cdf54",
-        "queueType": "RANKED_SOLO_5x5",
-        "tier": "SILVER",
-        "rank": "III",
-        "summonerId": "r8WHesECkWSdi2Bu_nMXYlqmwlwh1jvE9L8INMriT4JH9PQ",
-        "puuid": "Za_O7sx6CzsXd0BTdsF5aJKEf9vNe_A_RVh1uwCt_oIXSEJL-hK1obyrgJ1eAAulY2J8h079bqHK9w",
-        "leaguePoints": 51,
-        "wins": 26,
-        "losses": 25,
-        "veteran": false,
-        "inactive": false,
-        "freshBlood": false,
-        "hotStreak": false
-      },
-      "flex": {
-        "leagueId": "9627d85f-4711-4996-a14e-2fdda688de8c",
-        "queueType": "RANKED_FLEX_SR",
-        "tier": "PLATINUM",
-        "rank": "II",
-        "summonerId": "r8WHesECkWSdi2Bu_nMXYlqmwlwh1jvE9L8INMriT4JH9PQ",
-        "puuid": "Za_O7sx6CzsXd0BTdsF5aJKEf9vNe_A_RVh1uwCt_oIXSEJL-hK1obyrgJ1eAAulY2J8h079bqHK9w",
-        "leaguePoints": 99,
-        "wins": 46,
-        "losses": 48,
-        "veteran": false,
-        "inactive": false,
-        "freshBlood": false,
-        "hotStreak": false
-      }
-    }
-  },
   "703871229928538113": {
     "puuid": "8w8l-2pueTleCS__kITrtUptG8zpfApv2aQ0oBHJbz1z3kiP3Rn1BBqCbrXL0BnMJhfNJbpyFRGlpA",
     "gameName": "Amnesiame",
@@ -485,49 +442,6 @@
       }
     }
   },
-  "332156389961236481": {
-    "puuid": "GPq9TvORszQD_K6O4MKDn0wSm-GzwrB_vrpynyVPUnoWbLww_oupIBYkHG4g5B3vPC3TYNydhJhCLg",
-    "gameName": "ShïiGa",
-    "tagLine": "GaShï",
-    "summonerLevel": 652,
-    "profileIconId": 3507,
-    "server": "EUW",
-    "role": "SUPP",
-    "serverRegion": "euw1",
-    "accountRegion": "europe",
-    "ranked": {
-      "solo": {
-        "leagueId": "ce3d301f-2a62-4f2f-977c-190e1faac855",
-        "queueType": "RANKED_SOLO_5x5",
-        "tier": "PLATINUM",
-        "rank": "II",
-        "summonerId": "8fHp5r70ruHvG-_XJgYE3Rte_jcz10U094w7uwdcylPwDfQ",
-        "puuid": "GPq9TvORszQD_K6O4MKDn0wSm-GzwrB_vrpynyVPUnoWbLww_oupIBYkHG4g5B3vPC3TYNydhJhCLg",
-        "leaguePoints": 76,
-        "wins": 88,
-        "losses": 90,
-        "veteran": false,
-        "inactive": false,
-        "freshBlood": false,
-        "hotStreak": false
-      },
-      "flex": {
-        "leagueId": "a99f7ef2-fb48-4089-b51d-35fbc6195a33",
-        "queueType": "RANKED_FLEX_SR",
-        "tier": "PLATINUM",
-        "rank": "IV",
-        "summonerId": "8fHp5r70ruHvG-_XJgYE3Rte_jcz10U094w7uwdcylPwDfQ",
-        "puuid": "GPq9TvORszQD_K6O4MKDn0wSm-GzwrB_vrpynyVPUnoWbLww_oupIBYkHG4g5B3vPC3TYNydhJhCLg",
-        "leaguePoints": 68,
-        "wins": 60,
-        "losses": 68,
-        "veteran": false,
-        "inactive": false,
-        "freshBlood": false,
-        "hotStreak": false
-      }
-    }
-  },
   "512920714140057601": {
     "puuid": "P76OYxD_AWU_hB8KkLDVdKrRzJt95Y8RsVdStzdNwmXPPXNMgTvYoej-xV8tpRtL0T7mZhR9K7HVQw",
     "gameName": "Albiittta",
@@ -611,49 +525,6 @@
         "inactive": false,
         "freshBlood": false,
         "hotStreak": false
-      }
-    }
-  },
-  "423989494006415370": {
-    "puuid": "DbsA13CqtU165kZU1tcJHcrUyweAOLRMHOUUIeMzzBSN4IK9nK2Ce9tzo3wHIDCrP9MsZasXwMQ40g",
-    "gameName": "DiegoSniper",
-    "tagLine": "EUW",
-    "summonerLevel": 522,
-    "profileIconId": 5528,
-    "server": "EUW",
-    "role": "TOP",
-    "serverRegion": "euw1",
-    "accountRegion": "europe",
-    "ranked": {
-      "solo": {
-        "leagueId": "85c1953d-f955-4e3e-92a6-07e2bba63971",
-        "queueType": "RANKED_SOLO_5x5",
-        "tier": "GOLD",
-        "rank": "IV",
-        "summonerId": "bqk-eAGoyIyXSADsoKETnU8jIhuTWGaxgiQlyhlC3-NVcmd6",
-        "puuid": "DbsA13CqtU165kZU1tcJHcrUyweAOLRMHOUUIeMzzBSN4IK9nK2Ce9tzo3wHIDCrP9MsZasXwMQ40g",
-        "leaguePoints": 0,
-        "wins": 83,
-        "losses": 107,
-        "veteran": false,
-        "inactive": false,
-        "freshBlood": false,
-        "hotStreak": false
-      },
-      "flex": {
-        "leagueId": "da7389a5-f79c-4103-aa8d-cbf8f571e449",
-        "queueType": "RANKED_FLEX_SR",
-        "tier": "PLATINUM",
-        "rank": "II",
-        "summonerId": "bqk-eAGoyIyXSADsoKETnU8jIhuTWGaxgiQlyhlC3-NVcmd6",
-        "puuid": "DbsA13CqtU165kZU1tcJHcrUyweAOLRMHOUUIeMzzBSN4IK9nK2Ce9tzo3wHIDCrP9MsZasXwMQ40g",
-        "leaguePoints": 47,
-        "wins": 33,
-        "losses": 20,
-        "veteran": false,
-        "inactive": false,
-        "freshBlood": false,
-        "hotStreak": true
       }
     }
   }
