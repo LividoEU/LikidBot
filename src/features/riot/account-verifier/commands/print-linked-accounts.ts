@@ -31,7 +31,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
     await interaction.reply({
       content: "📎 Aquí tienes el archivo actual de cuentas vinculadas.",
       files: [attachment],
-      ephemeral: true
+      flags: MessageFlags.Ephemeral
     });
   } catch (err) {
     console.error("❌ Error reading linked accounts:", err);
