@@ -441,48 +441,5 @@
         "hotStreak": false
       }
     }
-  },
-  "511987075327983616": {
-    "puuid": "hL-gYg3WpUSFYK9sPSCdaiv29WgYB5jM_KnkIf-vi3xGmODOhYuUR0cL1LwmvvGcAISkBxhknaAmFg",
-    "gameName": "Zeskat",
-    "tagLine": "KATA",
-    "summonerLevel": 653,
-    "profileIconId": 6049,
-    "server": "EUW",
-    "role": "MID",
-    "serverRegion": "euw1",
-    "accountRegion": "europe",
-    "ranked": {
-      "solo": {
-        "leagueId": "4c25e0e3-9636-49dd-ad16-bbf85db7d113",
-        "queueType": "RANKED_SOLO_5x5",
-        "tier": "PLATINUM",
-        "rank": "III",
-        "summonerId": "B4BhIGxij9HVxg6nFDaqp2O6k3KceqSU1V_zsZL-KOx9tQY",
-        "puuid": "hL-gYg3WpUSFYK9sPSCdaiv29WgYB5jM_KnkIf-vi3xGmODOhYuUR0cL1LwmvvGcAISkBxhknaAmFg",
-        "leaguePoints": 78,
-        "wins": 78,
-        "losses": 71,
-        "veteran": false,
-        "inactive": false,
-        "freshBlood": false,
-        "hotStreak": false
-      },
-      "flex": {
-        "leagueId": "c14291e6-2a3a-429d-94ac-c7dbc98e708b",
-        "queueType": "RANKED_FLEX_SR",
-        "tier": "GOLD",
-        "rank": "II",
-        "summonerId": "B4BhIGxij9HVxg6nFDaqp2O6k3KceqSU1V_zsZL-KOx9tQY",
-        "puuid": "hL-gYg3WpUSFYK9sPSCdaiv29WgYB5jM_KnkIf-vi3xGmODOhYuUR0cL1LwmvvGcAISkBxhknaAmFg",
-        "leaguePoints": 78,
-        "wins": 18,
-        "losses": 15,
-        "veteran": false,
-        "inactive": false,
-        "freshBlood": false,
-        "hotStreak": false
-      }
-    }
   }
 }
