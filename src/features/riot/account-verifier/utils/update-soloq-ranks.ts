@@ -7,6 +7,25 @@ import { tierTranslation } from "../../constants/tiers.js";
 
 const ACCOUNTS_FILE = path.resolve("src", "features", "riot", "data", "linked-accounts.json");
 
+const VALID_SERVER_ROLES = new Set(["EUW", "NA", "LAN", "LAS"]);
+const VALID_PREFERRED_ROLES = new Set(["TOP", "JGL", "MID", "ADC", "SUPP"]);
+
+async function syncRole(
+  member: import("discord.js").GuildMember,
+  newRoleName: string | undefined,
+  validRoleSet: Set<string>
+) {
+  if (!newRoleName) return;
+  const newRoleNameUpper = newRoleName.toUpperCase();
+  const existingRole = member.roles.cache.find(r => validRoleSet.has(r.name.toUpperCase()));
+
+  if (existingRole?.name.toUpperCase() === newRoleNameUpper) return;
+
+  if (existingRole) await member.roles.remove(existingRole).catch(() => {});
+  const newRole = member.guild.roles.cache.find(r => r.name.toUpperCase() === newRoleNameUpper);
+  if (newRole) await member.roles.add(newRole).catch(() => {});
+}
+
 export async function updateSoloRanks(client: Client<true>) {
   let updated = false;
 
@@ -70,30 +89,10 @@ export async function updateSoloRanks(client: Client<true>) {
               if (oldRoleObj) await member.roles.remove(oldRoleObj).catch(() => {});
             }
 
-            const newRoleObj = guild.roles.cache.find(r => r.name.toLowerCase() === newTier.toLowerCase());
+            const newRoleObj = newTier ? guild.roles.cache.find(r => r.name.toLowerCase() === newTier.toLowerCase()) : undefined;
             if (newRoleObj) await member.roles.add(newRoleObj).catch(() => {});
-
-            // Server Role
-            const currentServer = account.server.toUpperCase();
-            const existingServerRole = member.roles.cache.find(r =>
-              ["EUW", "NA", "LAN", "LAS"].includes(r.name.toUpperCase())
-            );
-            if (existingServerRole?.name.toUpperCase() !== currentServer) {
-              if (existingServerRole) await member.roles.remove(existingServerRole).catch(() => {});
-              const serverRole = guild.roles.cache.find(r => r.name.toUpperCase() === currentServer);
-              if (serverRole) await member.roles.add(serverRole).catch(() => {});
-            }
-
-            // Preferred Role (TOP, JGL, etc.)
-            const currentPreferred = account.role.toUpperCase();
-            const existingPreferred = member.roles.cache.find(r =>
-              ["TOP", "JGL", "MID", "ADC", "SUPP"].includes(r.name.toUpperCase())
-            );
-            if (existingPreferred?.name.toUpperCase() !== currentPreferred) {
-              if (existingPreferred) await member.roles.remove(existingPreferred).catch(() => {});
-              const newPreferredRole = guild.roles.cache.find(r => r.name.toUpperCase() === currentPreferred);
-              if (newPreferredRole) await member.roles.add(newPreferredRole).catch(() => {});
-            }
+            await syncRole(member, account.server, VALID_SERVER_ROLES);
+            await syncRole(member, account.role, VALID_PREFERRED_ROLES);
           } catch (err) {
             console.warn(`Could not update roles for ${userId}:`, err);
           }
